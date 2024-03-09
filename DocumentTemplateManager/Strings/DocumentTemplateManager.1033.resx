@@ -257,4 +257,10 @@
     <value>Word templates are not available for this table, please create a Personal template or ask your system administrator to create system templates.</value>
     <comment/>
   </data>
+  <data name="AddDateTimeSuffixInDoucmentName_Display_Key" xml:space="preserve">
+    <value>Add Date Time Suffix In Document Name</value>
+  </data>
+  <data name="AddDateTimeSuffixInDoucmentName_Description_Key" xml:space="preserve">
+    <value>Add Date Time Suffix At The End Of Document Name When Uploading It to SharePoint</value>
+  </data>
 </root>

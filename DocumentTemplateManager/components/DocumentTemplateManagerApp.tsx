@@ -29,6 +29,7 @@ import { CreateActivityMimeAttachmentRequest, ExportPdfDocumentRequest, ExportWo
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { DocumentTypes, Entities, ResourceKeys, ToggleValue, WebApiConstants } from './Constants';
 import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
+import { formatDate } from 'date-fns';
 
 export interface IDocumentTemplateManagerProps {
     primaryEntityName: string,
@@ -37,7 +38,8 @@ export interface IDocumentTemplateManagerProps {
     primaryEntityTypeCode: number,
     isSharePointEnabled: boolean,
     primaryEntitySetName: string,
-    hasActivities:boolean,
+    hasActivities: boolean,
+    addDateTimeSuffixInDoucmentName: boolean
 }
 
 export const DocumentTemplateManagerApp: React.FunctionComponent<IDocumentTemplateManagerProps> = (props: IDocumentTemplateManagerProps) => {
@@ -295,19 +297,25 @@ export const DocumentTemplateManagerApp: React.FunctionComponent<IDocumentTempla
                 record = null;
             }
             return record;
-        },(reason)=>{
+        }, (reason) => {
             return null;
         });
         return customer;
     }
     const SaveToSharePoint = (responses: [any]) => {
         let requests: any = [];
+        const addDateTimeSuffixInDoucmentName = props.pcfContext.parameters.addDateTimeSuffixInDoucmentName.raw === "0" ? true : false;
+        let suffix = "";
+        if (addDateTimeSuffixInDoucmentName) {
+            const format = `${props.pcfContext.userSettings.dateFormattingInfo.shortDatePattern} ${props.pcfContext.userSettings.dateFormattingInfo.shortTimePattern}`;
+            suffix = formatDate(new Date(), format);
+        }
         for (let i = 0; i < responses.length; i++) {
             responses[i].json().then((response: any) => {
                 let entity: any = {};
                 entity[WebApiConstants.OdataType] = WebApiConstants.OdataTypes.sharePointDocument;
                 entity["locationid"] = "";
-                entity["title"] = `${selectedItems ? selectedItems[i].templateName : ""}.${selectedItems ? selectedItems[i].fileTypeExtension : ""}`
+                entity["title"] = `${selectedItems && addDateTimeSuffixInDoucmentName ? `${selectedItems[i].templateName}_${suffix}` : selectedItems && !addDateTimeSuffixInDoucmentName ? selectedItems[i].templateName : ""}.${selectedItems ? selectedItems[i].fileTypeExtension : ""}`
                 let parentEntityRef: any = {};
                 parentEntityRef[WebApiConstants.OdataType] = `Microsoft.Dynamics.CRM.${props.primaryEntityName}`;
                 parentEntityRef[`${props.primaryEntityName}id`] = props.primaryEntityId;

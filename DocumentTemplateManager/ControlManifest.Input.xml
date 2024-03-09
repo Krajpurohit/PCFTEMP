@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="K10" constructor="DocumentTemplateManager" version="0.0.2" display-name-key="DocumentTemplateManger_Display_Key" description-key="DocumentTemplateManger_Desc_Key" control-type="standard" >
+  <control namespace="K10" constructor="DocumentTemplateManager" version="0.0.4" display-name-key="DocumentTemplateManger_Display_Key" description-key="DocumentTemplateManger_Desc_Key" control-type="standard" >
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
@@ -17,6 +17,10 @@
       <value name="no" display-name-key="No_Display_Key" description-key="No_Description_Key">1</value>
     </property>
     <property name="enableForInactiveRecords" display-name-key="EnableForInactiveRecords_Display_Key" description-key="EnableForInactiveRecords_Description_Key" of-type="Enum" usage="input" required="true" default-value="1">
+    <value name="yes" display-name-key="Yes_Display_Key" description-key="Yes_Description_Key">0</value>
+      <value name="no" display-name-key="No_Display_Key" description-key="No_Description_Key">1</value>
+    </property>
+    <property name="addDateTimeSuffixInDoucmentName" display-name-key="AddDateTimeSuffixInDoucmentName_Display_Key" description-key="AddDateTimeSuffixInDoucmentName_Description_Key" of-type="Enum" usage="input" required="true" default-value="1">
     <value name="yes" display-name-key="Yes_Display_Key" description-key="Yes_Description_Key">0</value>
       <value name="no" display-name-key="No_Display_Key" description-key="No_Description_Key">1</value>
     </property>
