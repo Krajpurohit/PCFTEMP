@@ -307,8 +307,7 @@ export const DocumentTemplateManagerApp: React.FunctionComponent<IDocumentTempla
         const addDateTimeSuffixInDoucmentName = props.pcfContext.parameters.addDateTimeSuffixInDoucmentName.raw === "0" ? true : false;
         let suffix = "";
         if (addDateTimeSuffixInDoucmentName) {
-            const format = `${props.pcfContext.userSettings.dateFormattingInfo.shortDatePattern} ${props.pcfContext.userSettings.dateFormattingInfo.shortTimePattern}`;
-            suffix = formatDate(new Date(), format);
+            suffix = formatDate(new Date(), "yyyy_MM_dd_HH_mm_ss");
         }
         for (let i = 0; i < responses.length; i++) {
             responses[i].json().then((response: any) => {

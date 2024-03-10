@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="K10" constructor="DocumentTemplateManager" version="0.0.4" display-name-key="DocumentTemplateManger_Display_Key" description-key="DocumentTemplateManger_Desc_Key" control-type="standard" >
+  <control namespace="K10" constructor="DocumentTemplateManager" version="0.0.6" display-name-key="DocumentTemplateManger_Display_Key" description-key="DocumentTemplateManger_Desc_Key" control-type="standard" >
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
